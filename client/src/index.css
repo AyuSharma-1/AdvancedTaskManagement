@@ -40,3 +40,28 @@
     font-family: cursive;
     border-radius: 5px;
 }
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.card-container .card{
+    margin-left: 30px;
+    width: 18em;
+}
+/* ============= */
+.filter-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px;
+}
+
+.filter-group select{
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}

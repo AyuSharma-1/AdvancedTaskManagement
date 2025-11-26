@@ -53,7 +53,10 @@ const Login = () => {
         <div className="form-bottom">
           <p className="text-center">
             not a user? please
-            <Link to="/register"> Regiser</Link>
+            <Link to="/register"> Register</Link>
+          </p>
+          <p className="text-center">
+            <Link to="/forgot-Password"> Forget Password</Link>
           </p>
           <button type="submit" className="login-btn" onClick={loginHandler}>
             LOGIN

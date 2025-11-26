@@ -11,11 +11,11 @@ const Landing = () => {
           <span className="tagline2">finally.</span>
         </h1>
         <p>
-          type just anything into the tasdk field and TodoList <br />
+          type just anything into the task field and TodoList <br />
           on-of-its-kind natural langugae recognition will instantly fill your
           to-do-list
         </p>
-        <Link className="btn red" to="/register">
+        <Link className="bg-red-500 text-red-200" to="/register">
           Register Now!
         </Link>
         <Link className="btn blue" to="/login">

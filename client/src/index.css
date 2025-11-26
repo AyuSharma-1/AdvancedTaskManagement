@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .add-task{
     display: flex;
     flex-direction: row;

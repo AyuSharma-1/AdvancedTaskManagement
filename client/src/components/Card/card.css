@@ -5,7 +5,7 @@
 }
 
 .task-card {
-  min-height: 280px; /* ensures equal height */
+  min-height: 280px; 
   border-radius: 12px;
   display: flex;
   flex-direction: column;

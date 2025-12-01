@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import EditTodo from "../EditTodo";
 import toast from "react-hot-toast";
 import TodoServices from "../../Services/TodoServices";
-import "./card.css"; // custom styles for grid + cards
+import "./card.css"; 
 
 const Card = ({ allTask, getUserTask }) => {
   const [showModal, setShowModal] = useState(false);

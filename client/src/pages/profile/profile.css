@@ -1,10 +1,10 @@
 .profile-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* push container to top */
+  align-items: flex-start; 
   background: #ffffff;
   min-height: 100vh;
-  padding: 60px 20px 40px; /* top padding gives breathing room */
+  padding: 60px 20px 40px; 
 }
 
 .profile-card {

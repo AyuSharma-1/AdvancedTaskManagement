@@ -4,7 +4,7 @@ import PopModal from "../../components/PopModal";
 import TodoServices from "../../Services/TodoServices";
 import Card from "../../components/Card/Card";
 import Spinner from "../../components/Spinner";
-import "./homePage.css"
+import "./homePage.css";
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +12,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [deadline, setDeadline] = useState(""); // added deadline support
+  const [deadline, setDeadline] = useState("");
   const [allTask, setAllTask] = useState([]);
   const [filteredTask, setFilteredTask] = useState([]);
 
@@ -36,7 +36,7 @@ const HomePage = () => {
   };
 
   // get user todos
-  ;const userData = JSON.parse(localStorage.getItem("todoapp"));
+  const userData = JSON.parse(localStorage.getItem("todoapp"));
   const id = userData?.user?.id;
 
   const getUserTask = async () => {
@@ -55,7 +55,7 @@ const HomePage = () => {
 
   useEffect(() => {
     getUserTask();
-  }, [])
+  }, []);
 
   return (
     <>

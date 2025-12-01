@@ -4,21 +4,31 @@ const {
   getTodoController,
   deleteTodoController,
   updateTodoController,
+  getDashboard,
+  updateTaskStatusController,
 } = require("../controllers/todoController");
-const authMiddleware = require("../middlewares/authMiddleware");
+
+const auth = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
-//create todo
-router.post("/create", authMiddleware, createTodoController);
+// CREATE TODO
+router.post("/create", auth, createTodoController);
 
-//GET TODO
-router.post("/getAll/:userId", authMiddleware, getTodoController);
+// GET TODO
+router.get("/getAll/:userId", auth, getTodoController);
 
-//DELEET TODO
-router.delete("/delete/:id", authMiddleware, deleteTodoController);
+// DELETE TODO
+router.delete("/delete/:id", auth, deleteTodoController);
 
-//UPDATE TODO
-router.patch("/update/:id", authMiddleware, updateTodoController);
+// UPDATE TODO
+router.patch("/update/:id", auth, updateTodoController);
+
+//fetching the dashborad data
+router.get("/dashboard", auth, getDashboard);
+
+//Kanban 
+router.patch("/status/:id", auth, updateTaskStatusController);
+
 
 module.exports = router;

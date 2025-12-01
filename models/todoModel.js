@@ -19,10 +19,24 @@ const todoSchema = new mongoose.Schema(
       ref: "users",
       type: mongoose.Schema.ObjectId,
     },
+    deadline: {
+      type: Date,
+      required: true,
+    },
+    status: {
+      type: String,
+      enum: ["todo", "in-progress", "completed", "blocked"],
+      default: "todo",
+    },
+    priority: {
+      type: String,
+      enum: ["low", "medium", "high"],
+      default: "medium",
+    },
   },
   { timestamps: true }
 );
 
-const todoModel = mongoose.model("todo", todoSchema);
+const todoModel = mongoose.model("Todo", todoSchema);
 
 module.exports = todoModel;

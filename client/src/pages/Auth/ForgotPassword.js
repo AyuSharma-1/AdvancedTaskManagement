@@ -1,46 +1,65 @@
-import React from "react";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import Lottie from "lottie-react";
+import "./AuthStyles.css";
 import { getErrorMessage } from "../../Utils/ErrorMessage";
-import {forgotPassword} from "../../Services/AuthServices"
+import { forgotPassword } from "../../Services/AuthServices";
+import forgotAnimation from "../../assets/animation/Error 404 Page.json";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await forgotPassword(email)
-      toast.success("Reset Link sent to your email");
+      await forgotPassword(email);
+      toast.success("Reset link sent to your email!");
+      setEmail("");
     } catch (err) {
-      console.log(err);
       toast.error(getErrorMessage(err));
     }
   };
+
   return (
-    <div className="form-container">
-      <div className="form">
-        <div className="mb-3">
-          <h1 className="text-center">Forgot Password</h1>
-          <i className="fa-solid fa-circle-user"></i>
+    <div className="login-page">
+      {/* --- Animation Section --- */}
+      <div className="login-animation">
+        <Lottie animationData={forgotAnimation} loop={true} />
+      </div>
+
+      {/* --- Forgot Password Card --- */}
+      <div className="login-card">
+        <div className="login-brand">
+          <h1>Forgot Password?</h1>
+          <p>Enter your email to receive a reset link</p>
         </div>
-        <div className="mb-3">
-          <input
-            type="email"
-            className="form-control"
-            placeholder="enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="form-bottom">
-          <p className="text-center">
-            not a user? please
-            <Link to="/register"> Register</Link>
-          </p>
-          <button type="submit" className="login-btn" onClick={handleSubmit}>
-            SEND
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              className="form-control"
+              placeholder="example@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn login-btn">
+            SEND RESET LINK
           </button>
+        </form>
+
+        <div className="login-footer">
+          <p>
+            Remember password? <Link to="/login">Login</Link>
+          </p>
+          <p>
+            Not a user? <Link to="/register">Register here</Link>
+          </p>
         </div>
       </div>
     </div>

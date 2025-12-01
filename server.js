@@ -23,6 +23,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/user", require("./routes/userRoute"));
 app.use("/api/v1/todo", require("./routes/todoRoute"));
 app.use("/api/v1/test", require("./routes/testRouter"));
+app.use("/uploads", express.static("uploads"));
 
 //port
 const PORT = process.env.PORT || 8000;

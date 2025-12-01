@@ -1,0 +1,28 @@
+.kanban-board {
+  display: flex;
+  gap: 1rem;
+}
+
+.kanban-column {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 8px;
+  min-height: 300px;
+  flex: 1;
+}
+
+.kanban-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.kanban-task {
+  background: #fff;
+  border-radius: 6px;
+  cursor: grab;
+}
+
+.kanban-column.drag-over {
+  background: #e0f2fe;
+}

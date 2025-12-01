@@ -7,6 +7,10 @@ import TodoList from "./pages/Todos/TodoList";
 import { Toaster } from "react-hot-toast";
 import HomePage from "./pages/Home/HomePage";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import Dashboard from "./pages/Dashboard/dashboard";
+import Profile from "./pages/profile/profile";
+import Kanban from "./pages/Kanban/Kanban";
+import ResetPassword from "./pages/Auth/resetPassword";
 
 function App() {
   return (
@@ -18,7 +22,14 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/todoList" element={<TodoList />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />  
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/dashboard" element={<Dashboard />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/kanban" element={<Kanban />}></Route>
+        <Route
+          path="/reset-password/:token"
+          element={<ResetPassword />}
+        ></Route>
       </Routes>
       <Toaster />
     </div>

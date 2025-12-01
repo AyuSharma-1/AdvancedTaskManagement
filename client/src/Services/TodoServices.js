@@ -1,28 +1,38 @@
 import axios from "axios";
 
-//get user token
-const user = JSON.parse(localStorage.getItem("todoapp"));
+// Load user fresh every time
+const getUser = () => JSON.parse(localStorage.getItem("todoapp"));
 
-//default auth header
-axios.defaults.headers.common["Authorization"] = `bearer ${user?.token}`;
+// Attach token dynamically
+axios.interceptors.request.use((config) => {
+  const userData = getUser();
+  if (userData?.token) {
+    config.headers.Authorization = `Bearer ${userData.token}`;
+  }
+  return config;
+});
 
-//CRETE TODO
+// CREATE TODO
 const createTodo = (data) => {
   return axios.post("/api/v1/todo/create", data);
 };
-//GET ALL TODO
+
+// GET ALL TODO
 const getAllTodo = (id) => {
-  return axios.post(`/api/v1/todo/getAll/${id}`);
+  if (!id) {
+    throw new Error("User ID is required to fetch todos");
+  }
+  return axios.get(`/api/v1/todo/getAll/${id}`);
 };
 
-//UPDATE TODO
+// UPDATE TODO
 const updateTodo = (id, data) => {
-  return axios.patch("/api/v1/todo/update/" + id, data);
+  return axios.patch(`/api/v1/todo/update/${id}`, data);
 };
 
-//DLEETE TODO
+// DELETE TODO
 const deleteTodo = (id) => {
-  return axios.delete("/api/v1/todo/delete/" + id);
+  return axios.delete(`/api/v1/todo/delete/${id}`);
 };
 
 const TodoServices = { createTodo, getAllTodo, updateTodo, deleteTodo };

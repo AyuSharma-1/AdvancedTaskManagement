@@ -1,0 +1,18 @@
+.card {
+  border-radius: 8px;
+}
+
+.card-body h6 {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.card-body h4 {
+  font-weight: bold;
+  color: #111827;
+}
+
+.container h2 {
+  font-weight: 700;
+  color: #1f2937;
+}

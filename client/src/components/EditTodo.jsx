@@ -6,6 +6,9 @@ const EditTodo = ({ task, setShowModal, getUserTask }) => {
   const [title, setTitle] = useState(task?.title);
   const [description, setDescription] = useState(task?.description);
   const [isCompleted, setIsCompleted] = useState(task?.isCompleted);
+  const [deadline, setDeadline] = useState(
+    task?.deadline ? task.deadline.substring(0, 10) : ""
+  );
 
   const handleClose = () => {
     setShowModal(false);
@@ -23,14 +26,17 @@ const EditTodo = ({ task, setShowModal, getUserTask }) => {
       const userData = JSON.parse(localStorage.getItem("todoapp"));
       const createdBy = userData && userData.user.id;
       const data = { title, description, createdBy, isCompleted };
+
       if (!title || !description) {
         return toast.error("Please prvide title or description");
       }
+
       await TodoServices.updateTodo(id, data);
       setShowModal(false);
       toast.success("Task Updated Successfully");
       setTitle("");
       setDescription("");
+      setDeadline("");
       getUserTask();
     } catch (error) {
       console.log(error);
@@ -75,7 +81,16 @@ const EditTodo = ({ task, setShowModal, getUserTask }) => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
-                  <label htmlFor="floatigTextarea">Dscription</label>
+                  <label htmlFor="floatigTextarea">Description</label>
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">DeadLine</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    value={deadline}
+                    onChange={(e) => setDeadline(e.target.value)}
+                  />
                 </div>
                 <div className="my-3">
                   <select className="form-select" onChange={handleSelectChange}>
@@ -91,7 +106,7 @@ const EditTodo = ({ task, setShowModal, getUserTask }) => {
                   className="btn btn-secondary"
                   onClick={handleClose}
                 >
-                  close
+                  Close
                 </button>
                 <button
                   type="button"

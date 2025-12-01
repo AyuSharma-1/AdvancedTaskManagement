@@ -1,29 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Hero from "../../assets/images/hero.jpg";
+import Lottie from "lottie-react";
+import heroAnimation from "../../assets/animation/Man writing.json";
 import "./Landing.css";
+
 const Landing = () => {
   return (
-    <div className="hero">
-      <div className="intro-text">
-        <h1>
-          <span className="tagline1">Organize work and life</span> <br />
-          <span className="tagline2">finally.</span>
+    <div className="landing-container">
+      {/* === Left Side Text === */}
+      <div className="landing-text">
+        <h1 className="landing-title">
+          Organize your <span>work</span> and your <span>life</span>.
         </h1>
-        <p>
-          type just anything into the task field and TodoList <br />
-          on-of-its-kind natural langugae recognition will instantly fill your
-          to-do-list
+
+        <p className="landing-subtitle">
+          Turn your thoughts into organized tasks. Manage your day with smart
+          productivity tools.
         </p>
-        <Link className="bg-red-500 text-red-200" to="/register">
-          Register Now!
-        </Link>
-        <Link className="btn blue" to="/login">
-          Login
-        </Link>
+
+        <div className="landing-buttons">
+          <Link to="/register" className="btn primary-btn">
+            Get Started
+          </Link>
+
+          <Link to="/login" className="btn secondary-btn">
+            Login
+          </Link>
+        </div>
       </div>
-      <div className="">
-        <img src={Hero} alt="heroimage" width={"100%"} height={515} />
+
+      {/* === Right Side Lottie Animation === */}
+      <div className="landing-animation">
+        <Lottie animationData={heroAnimation} loop={true} />
       </div>
     </div>
   );

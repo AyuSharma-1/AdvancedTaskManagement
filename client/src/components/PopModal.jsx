@@ -1,40 +1,47 @@
 import React from "react";
 import toast from "react-hot-toast";
 import TodoServices from "../Services/TodoServices";
+
 const PopModal = ({
   getUserTask,
   title,
   setTitle,
   description,
   setDescription,
+  deadline,
+  setDeadline,
   showModal,
   setShowModal,
 }) => {
-  //handle close
   const handleClose = () => {
     setShowModal(false);
   };
-  //hanlde submit
+
   const handleSubmit = async () => {
     try {
       const userData = JSON.parse(localStorage.getItem("todoapp"));
       const createdBy = userData && userData.user.id;
-      const data = { title, description, createdBy };
+      const data = { title, description, createdBy, deadline };
+
       if (!title || !description) {
-        return toast.error("Please prvide title or description");
+        return toast.error("Please provide title and description");
       }
+
       const todo = await TodoServices.createTodo(data);
       setShowModal(false);
       getUserTask();
       toast.success("Task Created Successfully");
       console.log(todo);
+
       setTitle("");
       setDescription("");
+      setDeadline("");
     } catch (error) {
       console.log(error);
       toast.error(error);
     }
   };
+
   return (
     <>
       {showModal && (
@@ -66,14 +73,23 @@ const PopModal = ({
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
-                <div className="form-floating">
+                <div className="form-floating mb-3">
                   <textarea
                     className="form-control"
                     id="floatigTextarea"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   ></textarea>
-                  <label htmlFor="floatigTextarea">Dscription</label>
+                  <label htmlFor="floatigTextarea">Description</label>
+                </div>
+                <div className="mb-3">
+                  <label className="form-label">Deadline</label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    value={deadline}
+                    onChange={(e) => setDeadline(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="modal-footer">
@@ -82,7 +98,7 @@ const PopModal = ({
                   className="btn btn-secondary"
                   onClick={handleClose}
                 >
-                  close
+                  Close
                 </button>
                 <button
                   type="button"

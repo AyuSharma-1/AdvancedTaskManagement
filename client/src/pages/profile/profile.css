@@ -1,0 +1,115 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* push container to top */
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 60px 20px 40px; /* top padding gives breathing room */
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 28px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.profile-card h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+/* Profile Section */
+.profile-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-picture img,
+.profile-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  margin-bottom: 12px;
+}
+
+.profile-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: #666;
+}
+
+.username-display {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.upload-btn {
+  background: #007bff;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.upload-btn input {
+  display: none;
+}
+
+.remove-btn {
+  background: #dc3545;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Username Section */
+.username-card {
+  margin-top: 30px;
+}
+
+.username-card h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #444;
+  text-align: center;
+}
+
+.username-card input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+.update-btn {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  background: #218838;
+}

@@ -4,63 +4,75 @@ import "./AuthStyles.css";
 import AuthServices from "../../Services/AuthServices";
 import toast from "react-hot-toast";
 import { getErrorMessage } from "../../Utils/ErrorMessage";
+import Lottie from "lottie-react";
+import loginAnimation from "../../assets/animation/Error 404 Page.json";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-  //login function
+
   const loginHandler = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       const data = { email, password };
       const res = await AuthServices.loginUSer(data);
       toast.success(res.data.message);
-      navigate("/home");
       localStorage.setItem("todoapp", JSON.stringify(res.data));
-      console.log(res.data);
+      navigate("/home");
     } catch (err) {
       toast.error(getErrorMessage(err));
-      console.log(err);
+      console.error(err);
     }
   };
 
   return (
-    <div className="form-container">
-      <div className="form">
-        <div className="mb-3">
-          <i className="fa-solid fa-circle-user"></i>
+    <div className="login-page">
+      {/* --- Lottie Animation Box --- */}
+      <div className="login-animation">
+        <Lottie animationData={loginAnimation} loop={true} />
+      </div>
+
+      {/* --- Login Card --- */}
+      <div className="login-card">
+        <div className="login-brand">
+          <h1>Welcome Back</h1>
+          <p>Login to continue managing your productivity</p>
         </div>
-        <div className="mb-3">
-          <input
-            type="email"
-            className="form-control"
-            placeholder="enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="password"
-            className="form-control"
-            placeholder="enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="form-bottom">
-          <p className="text-center">
-            not a user? please
-            <Link to="/register"> Register</Link>
-          </p>
-          <p className="text-center">
-            <Link to="/forgot-Password"> Forget Password</Link>
-          </p>
-          <button type="submit" className="login-btn" onClick={loginHandler}>
+
+        <form onSubmit={loginHandler}>
+          <div className="form-group">
+            <label>Email address</label>
+            <input
+              type="email"
+              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              className="form-control"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn login-btn">
             LOGIN
           </button>
+        </form>
+
+        <div className="login-footer">
+          <Link to="/forgot-Password">Forgot Password?</Link>
+          <p>
+            Not a user? <Link to="/register">Register here</Link>
+          </p>
         </div>
       </div>
     </div>

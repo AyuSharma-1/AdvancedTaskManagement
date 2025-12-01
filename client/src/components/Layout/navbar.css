@@ -1,0 +1,37 @@
+.custom-navbar {
+  background: linear-gradient(90deg, #1a67f6, #4a90e2);
+  border-radius: 12px;
+}
+
+.navbar-brand {
+  font-size: 1.2rem;
+  color: #fff !important;
+}
+
+.nav-link {
+  color: #f1f1f1 !important;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff !important;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid #fff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #b02a37;
+}

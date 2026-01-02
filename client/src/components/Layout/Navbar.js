@@ -62,7 +62,7 @@ const Navbar = () => {
                   isActive ? "nav-link active" : "nav-link"
                 }
               >
-                <i class="fa-solid fa-grip"></i> Kanban
+                <i className="fa-solid fa-grip"></i> Kanban
               </NavLink>
             </li>
             <li className="nav-item">

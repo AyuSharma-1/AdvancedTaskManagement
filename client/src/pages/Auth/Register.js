@@ -5,7 +5,8 @@ import AuthServices from "../../Services/AuthServices";
 import toast from "react-hot-toast";
 import { getErrorMessage } from "../../Utils/ErrorMessage";
 import Lottie from "lottie-react";
-import registerAnimation from "../../assets/animation/Error 404 Page.json"; // use your animation file
+import registerAnimation from "../../assets/animation/Error 404 Page.json"; 
+
 
 const Register = () => {
   const [email, setEmail] = useState("");

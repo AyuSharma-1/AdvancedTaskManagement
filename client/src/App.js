@@ -11,7 +11,7 @@ import Dashboard from "./pages/Dashboard/dashboard";
 import Profile from "./pages/profile/profile";
 import Kanban from "./pages/Kanban/Kanban";
 import ResetPassword from "./pages/Auth/resetPassword";
-import Calender from "./pages/calender/Calender";
+// import Calender from "./pages/calender/Calender";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/kanban" element={<Kanban />}></Route>
-        <Route path="/calender" element={<Calender />}></Route>
+        {/* <Route path="/calender" element={<Calender />}></Route> */}
         <Route
           path="/reset-password/:token"
           element={<ResetPassword />}
